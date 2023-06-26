@@ -22,4 +22,9 @@ export class GeoServiceService {
     }
   }
 
+  async getNearbyLocations(lat: number, lon: number, token: string) {
+    const url = `http://localhost:3000/api/v1/gps-location/location?lat=${lat}&lon=${lon}`;
+    const headers = { 'Authorization': 'Bearer ' + token };
+    return this.http.get(url, { headers }).toPromise();
+  }
 }
